@@ -5,7 +5,6 @@ from typing import Any
 from uuid import UUID
 
 import pytest
-from iqe.utils.blockers import iqe_blocker
 from sqlalchemy import inspect
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm.base import NO_VALUE
@@ -276,7 +275,6 @@ def test_db_schema_groups_max_len(inventory_db_session):
             assert group_attrs[key] == value
 
 
-@iqe_blocker(iqe_blocker.jira("RHINENG-18981", category=iqe_blocker.PRODUCT_RFE))
 @pytest.mark.smoke
 @pytest.mark.ephemeral
 def test_db_schema_hosts_groups_correct(inventory_db_session):
@@ -310,7 +308,6 @@ def test_db_schema_hosts_groups_correct(inventory_db_session):
         assert association_attrs[key] == str(value)
 
 
-@iqe_blocker(iqe_blocker.jira("RHINENG-18981", category=iqe_blocker.PRODUCT_RFE))
 @pytest.mark.smoke
 @pytest.mark.ephemeral
 @pytest.mark.parametrize("id_key", ["org_id, host_id", "group_id"])
